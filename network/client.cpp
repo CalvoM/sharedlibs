@@ -33,7 +33,7 @@ int TCPClient::Connect(std::string address, std::string port){
         cout<<gai_strerror(errno)<<endl;
         return errno;
     }
-    cout<<"succssful connection to "<<address<<":"<<port<<endl;
+    cout<<"successful connection to "<<address<<":"<<port<<endl;
     return 0;
 }
 
