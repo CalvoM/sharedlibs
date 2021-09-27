@@ -37,6 +37,34 @@ int TCPClient::Connect(std::string address, std::string port){
     return 0;
 }
 
+int TCPClient::Send(std::string msg){
+    if(this->sockfd == -1){
+        cout<<"client not connected"<<endl;
+        return -1;
+    }
+    this->ret = send(this->sockfd,msg.c_str(),msg.size(),0);
+    if(this->ret == -1){
+        cout<<"send was not successful"<<endl;
+        return -1;
+    }
+    return this->ret;
+}
+
+int TCPClient::Recv(){
+    if(this->sockfd == -1){
+        cout<<"client not connected"<<endl;
+        return -1;
+    }
+    char buff[1024];
+    this->ret = recv(this->sockfd,buff,1024,0);
+    if(this->ret == -1){
+        cout<<"did not receive"<<endl;
+        return -1;
+    }
+    cout<<buff<<endl;
+    return this->ret;
+}
+
 int TCPClient::Disconnect(){
     freeaddrinfo(this->res);
     return close(this->sockfd);
