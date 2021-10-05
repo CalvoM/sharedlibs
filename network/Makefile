@@ -10,15 +10,15 @@ static: ${obj}
 		ar rcs out/static/libmynet.a out/static/*.o
 
 shared: ${obj}
-		g++ -shared run/main.cpp out/shared/*.o -o out/shared/libmynet.so
+		g++ -shared out/shared/*.o -o out/shared/libmynet.so
 
 run_static:	static
 		g++ run/main.cpp -Lout/static -lmynet -o ${staticBinFile}
 		./${staticBinFile}
 
 run_shared: shared
-		g++ main.cpp -Lout/shared -lmynet -o ${sharedBinFile}
-		LD_LIBRARY_PATH=$(pwd)/out/shared ./${sharedBinFile}
+		g++ run/main.cpp -Lout/shared -lmynet -o ${sharedBinFile}
+		LD_LIBRARY_PATH=out/shared ./${sharedBinFile}
 
 
 %.o : %.cpp ${includes}

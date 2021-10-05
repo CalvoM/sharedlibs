@@ -1,4 +1,4 @@
-#include "netutils.h"
+#include "../netutils.h"
 
 int main(){
     TCPClient tcp;
