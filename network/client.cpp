@@ -1,5 +1,6 @@
 #include "netutils.h"
 #include <iostream>
+#include <string.h>
 
 using std::memset;
 using std::cout;
@@ -13,7 +14,7 @@ TCPClient::TCPClient(){
     this->sockfd = -1;
 }
 
-int TCPClient::Connect(std::string address, std::string port){
+int TCPClient::Connect(string address, string port){
     if(this->sockfd != -1){
         cout<<"Client is already connected"<<endl;
         return EISCONN;
@@ -37,7 +38,7 @@ int TCPClient::Connect(std::string address, std::string port){
     return 0;
 }
 
-int TCPClient::Send(std::string msg){
+int TCPClient::SendString(string msg){
     if(this->sockfd == -1){
         cout<<"client not connected"<<endl;
         return -1;
@@ -48,6 +49,21 @@ int TCPClient::Send(std::string msg){
         return -1;
     }
     return this->ret;
+}
+
+int TCPClient::Send(char *msg){
+    if(this->sockfd == -1){
+        cout<<"client not connected"<<endl;
+        return -1;
+    }
+    cout<<strlen(msg)<<endl;
+    this->ret = send(this->sockfd,msg,strlen(msg),0);
+    if(this->ret == -1){
+        cout<<"send was not successful"<<endl;
+        return -1;
+    }
+    return this->ret;
+
 }
 
 int TCPClient::Recv(){
