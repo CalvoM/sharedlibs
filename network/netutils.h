@@ -19,7 +19,7 @@ class TCPClient{
         int Connect(string address, string port);
         int SendString(string msg);
         int Send(char *msg); 
-        int Recv();
+        int Recv(char* const, int);
         int Disconnect();
     private:
         int ret;

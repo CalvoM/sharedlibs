@@ -66,18 +66,16 @@ int TCPClient::Send(char *msg){
 
 }
 
-int TCPClient::Recv(){
+int TCPClient::Recv(char* const buffer, int buffer_size){
     if(this->sockfd == -1){
         cout<<"client not connected"<<endl;
         return -1;
     }
-    char buff[1024];
-    this->ret = recv(this->sockfd,buff,1024,0);
+    this->ret = recv(this->sockfd,buffer,buffer_size,0);
     if(this->ret == -1){
         cout<<"did not receive"<<endl;
         return -1;
     }
-    cout<<buff<<endl;
     return this->ret;
 }
 
