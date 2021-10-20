@@ -56,7 +56,6 @@ int TCPClient::Send(char *msg){
         cout<<"client not connected"<<endl;
         return -1;
     }
-    cout<<strlen(msg)<<endl;
     this->ret = send(this->sockfd,msg,strlen(msg),0);
     if(this->ret == -1){
         cout<<"send was not successful"<<endl;
@@ -82,4 +81,8 @@ int TCPClient::Recv(char* const buffer, int buffer_size){
 int TCPClient::Disconnect(){
     freeaddrinfo(this->res);
     return close(this->sockfd);
+}
+
+TCPClient::~TCPClient() {
+
 }

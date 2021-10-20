@@ -21,6 +21,7 @@ class TCPClient{
         int Send(char *msg); 
         int Recv(char* const, int);
         int Disconnect();
+        ~TCPClient();
     private:
         int ret;
         int sockfd; //socket file descriptor
