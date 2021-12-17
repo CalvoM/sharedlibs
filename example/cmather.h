@@ -2,7 +2,7 @@
 #define __CMATHER__H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 struct mather;
@@ -13,7 +13,6 @@ void mather_destroy(mather_t *m);
 void mather_incr(mather_t *m);
 void mather_decr(mather_t *m);
 int mather_val(mather_t *m);
-
 
 #ifdef __cplusplus
 }

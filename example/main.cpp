@@ -1,13 +1,13 @@
-#include <iostream>
 #include "cppmath.h"
+#include <iostream>
 using std::cout;
 
-int main(){
+int main() {
     CPPMather math(5);
     math.incr();
     math.incr();
     math.incr();
     math.incr();
     math.decr();
-    cout<<math.value()<<std::endl;
+    cout << math.value() << std::endl;
 }
